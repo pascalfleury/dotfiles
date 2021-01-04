@@ -1,0 +1,4 @@
+# Setting up homeshick
+alias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"
+
+alias ls="ls --color=auto"
