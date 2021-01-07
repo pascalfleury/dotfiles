@@ -1,4 +1,29 @@
 # Setting up homeshick
 alias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"
 
-alias ls="ls --color=auto"
+alias h=history
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -al'
+
+alias tt='tabit'
+alias dup='eval `clonepwd.sh`'
+alias dk='kompare -n -o - >/dev/null 2>&1'
+alias gk="gitk --all --author=$USER"
+
+alias today='date +%Y-%m-%d'
+alias now='date +%H%M'
+
+alias htop='rm -f $HOME/.htoprc ; /usr/bin/htop'
+
+# My usual typos
+alias more='less'
+alias mroe='less'
+alias gepr='grep'
+alias gerp='grep'
+alias grpe='grep'
+
+function concat() {
+  local IFS="$1"; shift; echo "$*"
+}
+
+[[ -f ${HOME}/.alias_local ]] && source ${HOME}/.alias_local
