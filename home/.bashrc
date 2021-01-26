@@ -34,6 +34,8 @@ export EDITOR='nano -w'
 [[ -d /usr/local/bin ]] && PATH="/usr/local/bin:${PATH}"
 [[ -d /usr/local/lib ]] && LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH}"
 
+[[ -d "${HOME}/.local/bin" ]] && PATH="${HOME}/.local/bin:${PATH}"
+
 # consider my personal aliases...
 [[ -f "${HOME}/.alias" ]] && source "${HOME}/.alias"
 [[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
