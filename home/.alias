@@ -26,4 +26,9 @@ function concat() {
   local IFS="$1"; shift; echo "$*"
 }
 
+function pd() {
+  [[ -z "$1" ]] && popd && return 0
+  pushd "$@"
+}
+
 [[ -f ${HOME}/.alias_local ]] && source ${HOME}/.alias_local
