@@ -21,4 +21,6 @@ if [[ -n "${DISPLAY}" && -x /usr/bin/arbtt-capture ]]; then
   (( arb_running )) || /usr/bin/arbtt-capture &
 fi
 
+export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="1600x1200,3840x2560,5120x1440"
+
 [[ -f "${HOME}/.profile_local" ]] && source "${HOME}/.profile_local"
