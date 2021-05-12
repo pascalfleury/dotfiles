@@ -63,7 +63,9 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3 xkeyboard
 modules-center = loas
-modules-right = cpu date-mtv date-nyc date-local hostname
+modules-right = cpu date-mtv date-nyc date-local hostname-ip
+
+enable-ipc = true
 
 tray-position = right
 tray-padding = 2
@@ -213,8 +215,17 @@ type = custom/script
 exec = hostname -s
 format-underline = #0af56c
 interval = 600
+
+[module/hostname-ip]
+type = custom/ipc
+hook-0 = hostname -s
+hook-1 = hostname -i
+format-underline = #0af56c
+initial = 1
 ; try to show the IP when clicking on the hostname
-click-left = echo left %counter%
+click-left = polybar-msg hook hostname-ip 2
+click-right = polybar-msg hook hostname-ip 1
+;$(( 1 + %counter% %% 2 ))
 
 [module/loas]
 type = custom/script
