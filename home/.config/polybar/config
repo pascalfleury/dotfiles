@@ -32,6 +32,7 @@ default = "JetBrainsMono:pixelsize=12;0"
 
 [bar/paf]
 ;monitor = ${env:MONITOR:HDMI-1}
+bottom = true
 width = 100%
 height = 27
 ;offset-x = 1%
