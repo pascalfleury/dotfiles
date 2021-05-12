@@ -85,6 +85,9 @@ if [[ "${INSIDE_EMACS}" = 'vterm' ]] \
   && [[ -n "${EMACS_VTERM_PATH}" ]] \
   && [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]]; then
   source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
+  unset KONSOLE_DBUS_SERVICE
+  unset KONSOLE_DBUS_SESSION
+  unset KONSOLE_DBUS_WINDOW
 fi
 
 # Remove some cruft that creeps into the PATH.
