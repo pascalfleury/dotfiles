@@ -251,6 +251,7 @@ format-foreground = #ff0000
 
 [module/loas-always]
 type = custom/script
+exec-if = gcertstatus --quiet
 exec = gcertstatus --format=statusbar
 label = %output%
 format-foreground = #00ff00
