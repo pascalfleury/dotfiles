@@ -60,7 +60,9 @@ export CDPATH="${CDPATH}:${HOME}/Projects:$(ls -d ~/Projects/* | tr '\n' ':' | s
 
 # My prompt
 if [[ -n "${PS1}" ]]; then
-  export PS1='\[\033[1;33m\]`tabit $?`\[\033[0;38m\]:\[\033[1;32m\]$(basename $(pwd -P))\[\033[0;38m\]\[\033[1;$(($??31:32))m\] \$\[\033[1;37m\] '
+  # Careful: any $() command in this prompt will set the $? and therefore influence
+  # what is displayed at the end with $(( $? ? 31 : 32 ))
+  export PS1='\[\033[1;33m\]`tabit $?`\[\033[0;38m\]:\[\033[1;32m\]\W\[\033[0;38m\]\[\033[1;$(($??31:32))m\] \$\[\033[1;37m\] '
 fi
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
