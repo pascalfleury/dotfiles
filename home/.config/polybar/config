@@ -38,7 +38,7 @@ height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 4.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -62,8 +62,8 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3 xkeyboard
-modules-center = loas
-modules-right = cpu date-mtv date-nyc date-local hostname-ip
+modules-center = loas loas-always
+modules-right = cpu load time-mtv time-nyc time-zrh date-local hostname-ip
 
 enable-ipc = true
 
@@ -160,6 +160,14 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage-sum:2%%
 
+[module/load]
+type = custom/script
+exec = awk '{print $1}' /proc/loadavg
+interval = 2
+; format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+
 [module/memory]
 type = internal/memory
 interval = 2
@@ -196,19 +204,25 @@ time = %H:%M
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
-label = ZRH %time% %date%
+label = %date%
 
-[module/date-mtv]
+[module/time-mtv]
 type = custom/script
 exec = TZ='America/Los_Angeles' date +%H:%M
 label = MTV %output%
 format-underline = #0af56c
 
-[module/date-nyc]
+[module/time-nyc]
 type = custom/script
 exec = TZ='America/New_York' date +%H:%M
 label = NYC %output%
 format-underline = #0af56c
+
+[module/time-zrh]
+type = custom/script
+exec = TZ='Europe/Zurich' date +%H:%M
+label = ZRH %output%
+format-underline = #ff8000
 
 [module/hostname]
 type = custom/script
@@ -229,10 +243,18 @@ click-right = polybar-msg hook hostname-ip 1
 
 [module/loas]
 type = custom/script
-;exec = gcertstatus --format=statusbar
-exec = [[ -e /google/src/head/depot/google3/BUILD ]] || echo "CHECK LOAS"
+exec-if = test -e /usr/bin/gcertstatus
+exec = gcertstatus --quiet || echo "CHECK LOAS"
+interval = 5
 label = %output%
 format-foreground = #ff0000
+
+[module/loas-always]
+type = custom/script
+exec = gcertstatus --format=statusbar
+label = %output%
+format-foreground = #00ff00
+
 
 [module/temperature]
 type = internal/temperature
