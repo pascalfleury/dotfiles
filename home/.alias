@@ -2,8 +2,12 @@
 alias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"
 
 alias h=history
-alias ls='ls --color=auto'
-alias ll='ls --color=auto -al'
+
+# Detect if ls supports the --color flag (fails on Darwin)
+COLOR=" --color=auto"
+ls ${COLOR} >/dev/null 2>&1 || COLOR=""
+alias ls="$(which ls)${COLOR}"
+alias ll="$(which ls)${COLOR} -al"
 
 alias tt='tabit'
 alias dup='eval `clonepwd.sh`'
