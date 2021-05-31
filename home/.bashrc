@@ -56,8 +56,8 @@ export HISTCONTROL=ignoredups
 
 # Access convenience for git5-* dirs.
 [[ -z "${CDPATH}" ]] && CDPATH="."
-if [[ -d "~/Projects" ]]; then
-    t CDPATH="${CDPATH}:${HOME}/Projects:$(ls -d ~/Projects/* | tr '\n' ':' | sed 's/:[^:]*$//g')"
+if [[ -d "${HOME}/Projects" ]]; then
+  CDPATH="${CDPATH}:${HOME}/Projects:$(ls -d ~/Projects/* | tr '\n' ':' | sed 's/:[^:]*$//g')"
 fi
 export CDPATH
 
