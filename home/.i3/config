@@ -121,8 +121,10 @@ bindsym $mod+Shift+Control+9 move container to workspace 9: Plan
 bindsym $mod+Shift+Control+0 move container to workspace 10
 
 # move to scratchpad
-bindsym $mod+Shift+Control+minus move scratchpad
-bindsym $mod+Shift+Control+plus scratchpad show
+#bindsym $mod+Shift+Control+minus move scratchpad
+#bindsym $mod+Shift+Control+plus scratchpad show
+bindsym $mod+Control+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # toggle tiling / floating
 bindsym $mod+Shift+Control+space floating toggle
