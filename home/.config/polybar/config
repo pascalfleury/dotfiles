@@ -63,7 +63,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3 xkeyboard
 modules-center = loas loas-always
-modules-right = cpu load time-mtv time-nyc time-zrh date-local hostname-ip
+modules-right = cpu load time-mtv time-nyc time-tok time-zrh date-local hostname-ip
 
 enable-ipc = true
 
@@ -224,6 +224,12 @@ exec = TZ='Europe/Zurich' date +%H:%M
 label = ZRH %output%
 format-underline = #ff8000
 
+[module/time-tok]
+type = custom/script
+exec = TZ='Asia/Tokyo' date +%H:%M
+label = TOK %output%
+format-underline = #0af56c
+
 [module/hostname]
 type = custom/script
 exec = hostname -s
@@ -244,7 +250,7 @@ click-right = polybar-msg hook hostname-ip 1
 [module/loas]
 type = custom/script
 exec-if = test -e /usr/bin/gcertstatus
-exec = gcertstatus --quiet || echo "CHECK LOAS"
+exec = (gcertstatus --quiet && echo "") || echo "CHECK LOAS"
 interval = 5
 label = %output%
 format-foreground = #ff0000
