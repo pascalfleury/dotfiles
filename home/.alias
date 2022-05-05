@@ -36,7 +36,7 @@ function pd() {
 }
 
 function ec() {
-  emacsclient "$1" &
+  emacsclient --no-wait "$1" &
 }
 
 [[ -f ${HOME}/.alias_local ]] && source ${HOME}/.alias_local
