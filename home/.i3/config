@@ -129,6 +129,7 @@ bindsym $mod+minus scratchpad show
 # toggle tiling / floating
 bindsym $mod+Control+f floating toggle
 bindsym $mod+Shift+Control+space floating toggle
+bindsym $mod+Shift+Control-minus floating toggle
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
