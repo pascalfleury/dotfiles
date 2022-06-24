@@ -38,12 +38,6 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+i focus up
-bindsym $mod+l focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -51,32 +45,14 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # Move focused window
-#bindsym $mod+Shift+Control+j move left
-#bindsym $mod+Shift+Control+k move down
-#bindsym $mod+Shift+Control+l move up
-#bindsym $mod+Shift+Control+semicolon move right
-bindsym $mod+Control+j move left
-bindsym $mod+Control+k move down
-bindsym $mod+Control+i move up
-bindsym $mod+Control+l move right
-
-# Alternatively, you can use the cursor keys:
-#bindsym $mod+Shift+Control+Left move left
-#bindsym $mod+Shift+Control+Down move down
-#bindsym $mod+Shift+Control+Up move up
-#bindsym $mod+Shift+Control+Right move right
 bindsym $mod+Control+Left move left
 bindsym $mod+Control+Down move down
 bindsym $mod+Control+Up move up
 bindsym $mod+Control+Right move right
 
 # split in horizontal orientation
-# getting windows left/right
-bindsym $mod+Control+h split h
-
-# split in vertical orientation
-# getting windows top/down
-bindsym $mod+Control+v split v
+bindsym $mod+Control+h split h  # getting windows left/right
+bindsym $mod+Control+v split v  # getting windows top/down
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -120,16 +96,12 @@ bindsym $mod+Shift+Control+8 move container to workspace 8
 bindsym $mod+Shift+Control+9 move container to workspace 9: Plan
 bindsym $mod+Shift+Control+0 move container to workspace 10
 
-# move to scratchpad
-#bindsym $mod+Shift+Control+minus move scratchpad
-#bindsym $mod+Shift+Control+plus scratchpad show
+# move to/show scratchpad
 bindsym $mod+Control+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # toggle tiling / floating
 bindsym $mod+Control+f floating toggle
-bindsym $mod+Shift+Control+space floating toggle
-bindsym $mod+Shift+Control-minus floating toggle
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
