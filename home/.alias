@@ -41,4 +41,4 @@ function ec() {
   emacsclient --no-wait "${nolines_file}" &
 }
 
-[[ -f ${HOME}/.alias_local ]] && source ${HOME}/.alias_local
+[[ -f ${HOME}/.alias_google ]] && source ${HOME}/.alias_google
