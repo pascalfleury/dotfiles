@@ -36,7 +36,9 @@ function pd() {
 }
 
 function ec() {
-  emacsclient "$1" &
+  local file="$1"
+  local nolines_file=$(echo ${file} | sed -e 's/[:0-9]*$//')
+  emacsclient --no-wait "${nolines_file}" &
 }
 
-[[ -f ${HOME}/.alias_local ]] && source ${HOME}/.alias_local
+[[ -f ${HOME}/.alias_google ]] && source ${HOME}/.alias_google
