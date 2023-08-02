@@ -8,6 +8,10 @@
 # for ssh logins, install and configure the libpam-umask package.
 umask 002
 
+# Handle the terminal UTF-8 output mode
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
