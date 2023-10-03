@@ -34,6 +34,7 @@ export EDITOR='nano -w'
 [[ -d /usr/local/bin ]] && PATH="/usr/local/bin:${PATH}"
 [[ -d /usr/local/lib ]] && LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH}"
 
+# pip installed tools.
 [[ -d "${HOME}/.local/bin" ]] && PATH="${HOME}/.local/bin:${PATH}"
 
 # consider my personal aliases...
