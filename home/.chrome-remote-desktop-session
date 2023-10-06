@@ -1,2 +1,2 @@
 source ${HOME}/.profile
-exec /usr/bin/startx
+exec /usr/bin/i3
