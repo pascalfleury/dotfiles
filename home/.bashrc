@@ -5,6 +5,7 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -34,7 +35,6 @@ export EDITOR='nano -w'
 [[ -d /usr/local/bin ]] && PATH="/usr/local/bin:${PATH}"
 [[ -d /usr/local/lib ]] && LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH}"
 
-# pip installed tools.
 [[ -d "${HOME}/.local/bin" ]] && PATH="${HOME}/.local/bin:${PATH}"
 
 # consider my personal aliases...
@@ -86,6 +86,12 @@ if [[ -d "${HOME}/.platformio/penv/bin" ]]; then
   PATH="${HOME}/.platformio/penv/bin:${PATH}"
 fi
 
+# Add my own tools
+for setup in $(ls "${HOME}/Projects/"*/exp-mytools/setup.sh); do
+  toolsdir=$(dirname "${setup}")
+  PATH="${toolsdir}/bin:${PATH}"
+done
+
 # Setup Emacs's VTerm communication
 if [[ "${INSIDE_EMACS}" = 'vterm' ]] \
   && [[ -n "${EMACS_VTERM_PATH}" ]] \
@@ -102,11 +108,3 @@ if [[ -x $(which clean_path >/dev/null 2>&1) ]]; then
 fi
 
 [[ -f "${HOME}/.bashrc_local" ]] &&  source "${HOME}/.bashrc_local"
-# Setup Emacs's VTerm communication
-if [[ "${INSIDE_EMACS}" = 'vterm' ]] \
-    && [[ -n "${EMACS_VTERM_PATH}" ]] \
-    && [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]]; then
-        source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
-fi
-
-export PATH
