@@ -48,7 +48,8 @@ bind '"\e[B"':history-search-forward  2>/dev/null
 
 # Playfull stuff with history
 export SHELLID="$(date +'%Y%m%d%H%M%S')$$"
-export HIST_FILE="${HIST_FILE:-${HOME}/.history.$(hostname -s)}"
+export HIST_DIR="${HIST_DIR:-${HOME}/cli_history}"
+export HIST_FILE="${HIST_FILE:-${HIST_DIR}/cli.$(hostname -s)}"
 export HISTTIMEFORMAT=""
 export PROMPT_COMMAND='echo $SHELLID $PIPESTATUS $USER@$HOSTNAME $(date +"%Y%m%d %H%M%S") $(printf %q "$PWD") "$(history 1)" >> $HIST_FILE'
 # Simplification to put history into the hist file
