@@ -109,3 +109,9 @@ if [[ -x $(which clean_path >/dev/null 2>&1) ]]; then
 fi
 
 [[ -f "${HOME}/.bashrc_local" ]] &&  source "${HOME}/.bashrc_local"
+# Setup Emacs's VTerm communication
+if [[ "${INSIDE_EMACS}" = 'vterm' ]] \
+    && [[ -n "${EMACS_VTERM_PATH}" ]] \
+    && [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]]; then
+        source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
+fi
