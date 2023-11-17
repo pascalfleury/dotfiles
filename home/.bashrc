@@ -88,7 +88,7 @@ if [[ -d "${HOME}/.platformio/penv/bin" ]]; then
 fi
 
 # Add my own tools
-for setup in $(ls "${HOME}/Projects/"*/exp-mytools/setup.sh); do
+for setup in $(ls "${HOME}/Projects/"*/exp-mytools/setup.sh 2>/dev/null); do
   toolsdir=$(dirname "${setup}")
   PATH="${toolsdir}/bin:${PATH}"
 done
