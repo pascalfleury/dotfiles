@@ -37,8 +37,14 @@ function pd() {
 
 function ec() {
   local file="$1"
-  local nolines_file=$(echo ${file} | sed -e 's/(:[0-9]*)?$//')
-  emacsclient --no-wait "${nolines_file}" &
+  filename="${file%%:*}"
+  lineno="${file#*:}"
+  if [[ "${lineno}" != "${filename}" ]]; then
+    lineno="+${lineno}"
+  else
+    lineno=""
+  fi
+  emacsclient --no-wait "${lineno}" "${filename}" &
 }
 
 [[ -f ${HOME}/.alias_google ]] && source ${HOME}/.alias_google
