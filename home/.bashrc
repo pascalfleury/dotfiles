@@ -94,7 +94,7 @@ for setup in $(ls "${HOME}/Projects/"*/exp-mytools/setup.sh 2>/dev/null); do
 done
 
 # Setup Emacs's VTerm communication
-if [[ "${INSIDE_EMACS}" = 'vterm' ]] \
+if [[ "${INSIDE_EMACS}" =~ ^vterm ]] \
   && [[ -n "${EMACS_VTERM_PATH}" ]] \
   && [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]]; then
   source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
