@@ -44,7 +44,7 @@ function ec() {
   else
     lineno=""
   fi
-  emacsclient --no-wait "${lineno}" "${filename}" &
+  emacsclient --no-wait ${lineno} "${filename}" &
 }
 
 [[ -f ${HOME}/.alias_google ]] && source ${HOME}/.alias_google
