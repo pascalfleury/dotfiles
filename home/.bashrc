@@ -101,6 +101,7 @@ if [[ "${INSIDE_EMACS}" =~ ^vterm ]] \
   unset KONSOLE_DBUS_SERVICE
   unset KONSOLE_DBUS_SESSION
   unset KONSOLE_DBUS_WINDOW
+  export HGEDITOR="emacsclient"
 fi
 
 # Remove some cruft that creeps into the PATH.
