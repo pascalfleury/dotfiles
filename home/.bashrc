@@ -104,15 +104,16 @@ if [[ "${INSIDE_EMACS}" =~ ^vterm ]] \
   export HGEDITOR="emacsclient"
 fi
 
+# Setup Emacs' eat terminal local dir.
+if [[ "${INSIDE_EMACS}" =~ eat ]]; then
+  [[ "$PWD" =~ /google3/ ]] && cd "${PWD%%/google3/*}/google3"
+  unset KONSOLE_DBUS_SERVICE
+  unset KONSOLE_DBUS_SESSION
+  unset KONSOLE_DBUS_WINDOW
+  export HGEDITOR="emacsclient"
+fi
+
 # Remove some cruft that creeps into the PATH.
 if [[ -x $(which clean_path >/dev/null 2>&1) ]]; then
   export PATH="$(clean_path "$PATH")"
-fi
-
-[[ -f "${HOME}/.bashrc_local" ]] &&  source "${HOME}/.bashrc_local"
-# Setup Emacs's VTerm communication
-if [[ "${INSIDE_EMACS}" = 'vterm' ]] \
-    && [[ -n "${EMACS_VTERM_PATH}" ]] \
-    && [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]]; then
-        source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
 fi
