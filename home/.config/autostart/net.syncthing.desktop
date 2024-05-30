@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=SyncThing
-Comment=synchronize things across computers.
-Exec=/home/fleury/bin/syncthing
+Comment=synchronize things across computers
+Exec=/bin/sh -c "$HOME/bin/syncthing"
 Icon=syncthing
 Terminal=false
-Type=Application
+Type=Service
+NoDisplay=true
 StartupNotify=true
-Categories=GNOME;GTK;Utility;
+Categories=GNOME;GTK;Utility;Network;
 X-Purism-FormFactor=Workstation;Mobile;

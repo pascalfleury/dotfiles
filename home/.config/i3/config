@@ -163,6 +163,9 @@ include ~/.config/i3/`hostname -s`.conf
 #}
 exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
+# Start the programs registered as 'autostart' at login.
+exec --no-startup-id $HOME/.config/i3/autostart.sh
+
 set $MENU "Emacs Gimp Inkscape Konsole"
 bindsym Menu mode $MENU
 mode $MENU {
