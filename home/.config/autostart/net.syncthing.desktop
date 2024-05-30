@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SyncThing
+Comment=synchronize things across computers.
+Exec=/home/fleury/bin/syncthing
+Icon=syncthing
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+X-Purism-FormFactor=Workstation;Mobile;
