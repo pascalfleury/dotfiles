@@ -119,9 +119,7 @@ label-indicator-underline = ${colors.secondary}
 
 ; "click-(left|middle|right)" will be executed using "/bin/sh -c $COMMAND"
 click-left = "if [ -e ~/.dir_status_plain ]; then rm ~/.dir_status_plain ; else touch ~/.dir_status_plain ; fi"
-click-middle = notify-send middle
-click-right = notify-send right
-
+           
 [module/filesystem]
 type = internal/fs
 interval = 25
