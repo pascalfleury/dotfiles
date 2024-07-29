@@ -112,7 +112,7 @@ format = <label>
 format-background = #000
 format-foreground = #fff
 format-padding = 4
-label = Some random label
+label = plain
 
 ; "click-(left|middle|right)" will be executed using "/bin/sh -c $COMMAND"
 click-left = notify-send left
