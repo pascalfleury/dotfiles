@@ -110,6 +110,7 @@ if [[ "${INSIDE_EMACS}" =~ eat ]]; then
   unset KONSOLE_DBUS_SERVICE
   unset KONSOLE_DBUS_SESSION
   unset KONSOLE_DBUS_WINDOW
+  export GIT_EDITOR="emacsclient"
   export HGEDITOR="emacsclient"
 fi
 
