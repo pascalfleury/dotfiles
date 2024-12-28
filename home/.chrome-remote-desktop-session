@@ -1,2 +1,1 @@
-source ${HOME}/.profile
-exec /usr/bin/i3
+exec /etc/X11/Xsession /usr/bin/plasma_session
