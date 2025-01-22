@@ -1,9 +1,2 @@
 source ${HOME}/.profile
-
-HOSTNAME=$(hostname)
-switch "${HOSTNAME}" in
-  pilatus) exec /etc/X11/Xsession /usr/bin/plasma_session
-           ;;
-  *)       exec /usr/bin/i3
-           ;;
-esac
+exec /usr/bin/i3
