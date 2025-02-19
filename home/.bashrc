@@ -106,7 +106,11 @@ fi
 
 # Setup Emacs' eat terminal local dir.
 if [[ "${INSIDE_EMACS}" =~ eat ]]; then
+  # Go to a client's root dir.
   [[ "$PWD" =~ /google3/ ]] && cd "${PWD%%/google3/*}/google3"
+  # If git repo, find its root as well.
+  gitroot=$(git rev-parse --show-toplevel 2>/dev/null)
+  [[ -n "${gitroot}" ]] && cd "${gitroot}"
   unset KONSOLE_DBUS_SERVICE
   unset KONSOLE_DBUS_SESSION
   unset KONSOLE_DBUS_WINDOW
