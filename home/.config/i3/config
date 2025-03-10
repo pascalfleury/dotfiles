@@ -28,6 +28,12 @@ floating_modifier $mod
 # fleury: removed because it interferes with Emacs hyperbole.
 # bindsym $mod+Return exec konsole
 
+# Config some specificl windows
+# for_window [title="MOMA Single Sign On - Google Chrome"] floating enable
+for_window [title="Page Unresponsive"] floating enable
+for_window [title="xterm"] floating enable
+for_window [title="gcert"] float enable
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -176,8 +182,3 @@ mode $MENU {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-
-# Config some specificl windows
-# for_window [title="MOMA Single Sign On - Google Chrome"] floating enable
-for_window [title="Page Unresponsive"] floating enable
-for_window [title="xterm"] floating enable
