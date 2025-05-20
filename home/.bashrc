@@ -25,8 +25,8 @@ for file in /etc/bashrc /etc/bash.bashrc /etc/bash_completion; do
 done
 
 # Handle the terminal UTF-8 output mode
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LANG="en_US.utf8"
+export LC_ALL="en_US.utf8"
 
 # User specific aliases and functions go here (override system defaults)
 export EDITOR='nano -w'
