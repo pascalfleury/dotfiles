@@ -23,6 +23,7 @@ export HOME="${HOME:-/home/${USER}}"
 for file in /etc/bashrc /etc/bash.bashrc /etc/bash_completion; do
   [[ -f "${file}" ]] && source "${file}"
 done
+complete -F _blaze::complete_test_target_wrapper -o nospace benchy
 
 # Handle the terminal UTF-8 output mode
 export LANG="en_US.utf8"
