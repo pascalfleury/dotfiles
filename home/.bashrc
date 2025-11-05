@@ -26,8 +26,8 @@ done
 complete -F _blaze::complete_test_target_wrapper -o nospace benchy
 
 # Handle the terminal UTF-8 output mode
-export LANG="en_US.utf8"
-export LC_ALL="en_US.utf8"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 # User specific aliases and functions go here (override system defaults)
 export EDITOR='nano -w'
