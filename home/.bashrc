@@ -57,7 +57,7 @@ export PROMPT_COMMAND='echo $SHELLID $PIPESTATUS $USER@$HOSTNAME $(date +"%Y%m%d
 export HISTCONTROL=ignoredups
 #export PROMPT_COMMAND="history -a && `which exp` history \"\$(history 1)\""
 
-# Access convenience for git5-* dirs.
+# Access convenience for project dirs.
 [[ -z "${CDPATH}" ]] && CDPATH="."
 if [[ -d "${HOME}/Projects" ]]; then
   CDPATH="${CDPATH}:${HOME}/Projects:$(ls -d ~/Projects/* | tr '\n' ':' | sed 's/:[^:]*$//g')"
@@ -68,6 +68,7 @@ export CDPATH
 if [[ -n "${PS1}" ]]; then
   # Careful: any $() command in this prompt will set the $? and therefore influence
   # what is displayed at the end with $(( $? ? 31 : 32 ))
+  # So her eit is passed to tabit, and tabit will return with that return code.
   export PS1='\[\033[1;33m\]`tabit $?`\[\033[0;38m\]:\[\033[1;32m\]\W\[\033[0;38m\]\[\033[1;$(($??31:32))m\] \$\[\033[1;37m\] '
 fi
 
