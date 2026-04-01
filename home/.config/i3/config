@@ -182,3 +182,7 @@ mode $MENU {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
+
+# Some papplications need to open in floating mode always.
+for_window [class="^KDiff3$"] floating enable
+for_window [class="^Kompare$"] floating enable
