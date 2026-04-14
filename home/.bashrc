@@ -30,7 +30,6 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # User specific aliases and functions go here (override system defaults)
-export EDITOR='nano -w'
 
 # Add /user/local
 [[ -d /usr/local/bin ]] && PATH="/usr/local/bin:${PATH}"
@@ -95,32 +94,36 @@ for setup in $(ls "${HOME}/Projects/"*/exp-mytools/setup.sh 2>/dev/null); do
   PATH="${toolsdir}/bin:${PATH}"
 done
 
-# Setup Emacs's VTerm communication
-if [[ "${INSIDE_EMACS}" =~ ^vterm ]] \
-  && [[ -n "${EMACS_VTERM_PATH}" ]] \
-  && [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]]; then
-  source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
-  unset KONSOLE_DBUS_SERVICE
-  unset KONSOLE_DBUS_SESSION
-  unset KONSOLE_DBUS_WINDOW
-  export HGEDITOR="emacsclient"
-fi
 
-# Setup Emacs' eat terminal local dir.
-if [[ "${INSIDE_EMACS}" =~ eat ]]; then
+function setup_bash_in_emacs() {
   # Go to a client's root dir.
   [[ "$PWD" =~ /google3/ ]] && cd "${PWD%%/google3/*}/google3"
   # If git repo, find its root as well.
   gitroot=$(git rev-parse --show-toplevel 2>/dev/null)
   [[ -n "${gitroot}" ]] && cd "${gitroot}"
+
   unset KONSOLE_DBUS_SERVICE
   unset KONSOLE_DBUS_SESSION
   unset KONSOLE_DBUS_WINDOW
-  export GIT_EDITOR="emacsclient"
-  export HGEDITOR="emacsclient"
+  export GIT_EDITOR="${EDITOR}"
+  export HGEDITOR="${EDITOR}"
+}
+
+# Setup Emacs's VTerm communication
+if [[ "${INSIDE_EMACS}" =~ ^vterm ]]; then
+  [[ -f "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh" ]] && source "${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh"
+  setup_bash_in_emacs
+fi
+
+# Setup Emacs' eat terminal local dir.
+if [[ "${INSIDE_EMACS}" =~ eat ]]; then
+  setup_bash_in_emacs
 fi
 
 # Remove some cruft that creeps into the PATH.
 if [[ -x $(which clean_path >/dev/null 2>&1) ]]; then
   export PATH="$(clean_path "$PATH")"
 fi
+
+# Set editor up as nano if not set yet.
+export EDITOR="${EDITOR:-nano -w}"
