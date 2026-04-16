@@ -84,9 +84,9 @@ if [[ -d "${ANDROID_SDK}" ]]; then
 fi
 
 # Add PlatformIO tools
-if [[ -d "${HOME}/.platformio/penv/bin" ]]; then
-  PATH="${HOME}/.platformio/penv/bin:${PATH}"
-fi
+#if [[ -d "${HOME}/.platformio/penv/bin" ]]; then
+#  PATH="${HOME}/.platformio/penv/bin:${PATH}"
+#fi
 
 # Add my own tools
 for setup in $(ls "${HOME}/Projects/"*/exp-mytools/setup.sh 2>/dev/null); do
