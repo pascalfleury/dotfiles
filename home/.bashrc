@@ -132,3 +132,10 @@ export EDITOR="${EDITOR:-nano -w}"
 if [[ $(which direnv) ]] ; then
   eval "$(direnv hook bash)"
 fi
+
+# Setup for Flutter
+FLUTTER_DIR="${HOME}/Apps/Flutter/flutter"
+if [[ -d "${FLUTTER_DIR}" ]]; then
+  export PATH="${PATH}:${FLUTTER_DIR}/bin"
+  export FLUTTER_BUILD_DIR="${HOME}/.cache/flutter_builds"
+fi
