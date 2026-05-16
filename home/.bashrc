@@ -127,3 +127,8 @@ fi
 
 # Set editor up as nano if not set yet.
 export EDITOR="${EDITOR:-nano -w}"
+
+# Setup the direnv
+if [[ $(which direnv) ]] ; then
+  eval "$(direnv hook bash)"
+fi
