@@ -11,6 +11,14 @@
 # Alt (Mod1) or Windows (Mod4)
 set $mod Mod1
 
+# Make a mode that will pass any key through and be ignored by i3, escept 'Esc'.
+mode "passthrough" {
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Escape mode "passthrough"
+
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
