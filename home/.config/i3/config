@@ -199,5 +199,5 @@ mode $MENU {
 }
 
 # Some papplications need to open in floating mode always.
-for_window [class="^KDiff3$"] floating enable
-for_window [class="^Kompare$"] floating enable
+for_window [class="^(?i)KDiff3$"] floating enable, move position center
+for_window [class="^(?i)Kompare$"] floating enable, move position center
