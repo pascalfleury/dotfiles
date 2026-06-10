@@ -88,28 +88,28 @@ bindsym $mod+p focus parent
 bindsym $mod+c focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9: Plan
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 # move focused container to workspace
-bindsym $mod+Shift+Control+1 move container to workspace 1
-bindsym $mod+Shift+Control+2 move container to workspace 2
-bindsym $mod+Shift+Control+3 move container to workspace 3
-bindsym $mod+Shift+Control+4 move container to workspace 4
-bindsym $mod+Shift+Control+5 move container to workspace 5
-bindsym $mod+Shift+Control+6 move container to workspace 6
-bindsym $mod+Shift+Control+7 move container to workspace 7
-bindsym $mod+Shift+Control+8 move container to workspace 8
-bindsym $mod+Shift+Control+9 move container to workspace 9: Plan
-bindsym $mod+Shift+Control+0 move container to workspace 10
+bindsym $mod+Shift+Control+1 move container to workspace number 1
+bindsym $mod+Shift+Control+2 move container to workspace number 2
+bindsym $mod+Shift+Control+3 move container to workspace number 3
+bindsym $mod+Shift+Control+4 move container to workspace number 4
+bindsym $mod+Shift+Control+5 move container to workspace number 5
+bindsym $mod+Shift+Control+6 move container to workspace number 6
+bindsym $mod+Shift+Control+7 move container to workspace number 7
+bindsym $mod+Shift+Control+8 move container to workspace number 8
+bindsym $mod+Shift+Control+9 move container to workspace number 9
+bindsym $mod+Shift+Control+0 move container to workspace number 10
 
 # move to/show scratchpad
 bindsym $mod+Control+minus move scratchpad
@@ -201,3 +201,9 @@ mode $MENU {
 # Some papplications need to open in floating mode always.
 for_window [class="^(?i)KDiff3$"] floating enable, move position center
 for_window [class="^(?i)Kompare$"] floating enable, move position center
+
+# My setup: rename workspace 9 & 10, and start btop
+exec_always --no-startup-id i3-msg 'workspace --no-auto-back-and-forth "9: Plan"'
+exec_always --no-startup-id i3-msg 'workspace --no-auto-back-and-forth "10: CPU"'
+assign [class="(?i)BTop"] workspace number 10
+exec --no-startup-id "konsole --caption 'BTop Konsole' -e btop"
