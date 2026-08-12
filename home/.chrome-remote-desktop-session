@@ -1,5 +1,5 @@
 source ${HOME}/.profile
 case "$(hostname -a)" in
-  moleson)  exec /bin/sway ;;
+  moleson)  exec /usr/bin/i3 ;;
         *)  exec /usr/bin/i3 ;;
 esac
