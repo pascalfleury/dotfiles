@@ -1,0 +1,98 @@
+{
+    "position": "bottom",
+    "height": 27,
+    // Define module order
+    "modules-left": ["sway/workspaces", "sway/language", "custom/plain-dir-status"],
+    "modules-center": ["custom/loas", "custom/loas-always", "custom/reboot", "custom/reboot-today"],
+    "modules-right": ["cpu", "custom/load", "clock#mtv", "clock#nyc", "clock#tok", "clock#zrh", "clock#local", "battery", "custom/hostname"],
+
+    // Left Modules
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}"
+    },
+    
+    "sway/language": {
+        "format": "{short}"
+    },
+
+    "custom/plain-dir-status": {
+        "exec": "if [ -e ~/.dir_status_plain ]; then echo @ ; else echo ● ; fi",
+        "interval": 2,
+        "on-click": "if [ -e ~/.dir_status_plain ]; then rm ~/.dir_status_plain ; else touch ~/.dir_status_plain ; fi"
+    },
+
+    // Center Modules (gLinux specific)
+    "custom/loas": {
+        "exec": "(gcertstatus --quiet && echo \"\") || echo \"CHECK LOAS\"",
+        "interval": 5
+    },
+
+    "custom/loas-always": {
+        "exec": "gcertstatus --format=statusbar",
+        "interval": 10
+    },
+
+    "custom/reboot": {
+        "exec": "next_reboot.sh",
+        "interval": 180
+    },
+
+    "custom/reboot-today": {
+        "exec": "next_reboot.sh --min_days=0 --max_days=1",
+        "interval": 185
+    },
+
+    // Right Modules
+    "cpu": {
+        "interval": 2,
+        "format": "{usage}%"
+    },
+
+    "custom/load": {
+        "exec": "awk '{print $1}' /proc/loadavg",
+        "interval": 2
+    },
+
+    // Multiple Clocks / Timezones
+    "clock#mtv": {
+        "timezone": "America/Los_Angeles",
+        "format": "MTV {:%H:%M}"
+    },
+    
+    "clock#nyc": {
+        "timezone": "America/New_York",
+        "format": "NYC {:%H:%M}"
+    },
+
+    "clock#tok": {
+        "timezone": "Asia/Tokyo",
+        "format": "TOK {:%H:%M}"
+    },
+
+    "clock#zrh": {
+        "timezone": "Europe/Zurich",
+        "format": "ZRH {:%H:%M}"
+    },
+
+    "clock#local": {
+        "format": "{:%d/%m/%Y %H:%M}"
+    },
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "low": 10
+        },
+        "format": "↓{capacity}%",
+        "format-charging": "↑{capacity}%"
+    },
+
+    // Handled differently than IPC in polybar, simple click toggles could be handled here or inside a custom bash script
+    "custom/hostname": {
+        "exec": "hostname -s",
+        "interval": 600,
+        "on-click": "hostname -i"
+    }
+}

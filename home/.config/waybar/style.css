@@ -1,0 +1,76 @@
+/* Core Bar Styles */
+* {
+    font-family: "JetBrainsMono", "DejaVu Sans Mono", sans-serif;
+    font-size: 12px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: #222222;
+    color: #dfdfdf;
+    border-bottom: 0px solid rgba(0, 0, 0, 0);
+}
+
+/* Margins and Padding for blocks */
+#workspaces, #language, #custom-plain-dir-status,
+#custom-loas, #custom-loas-always, #custom-reboot, #custom-reboot-today,
+#cpu, #custom-load, #clock, #battery, #custom-hostname {
+    padding: 0 8px;
+    margin: 0 4px;
+}
+
+/* Workspaces (equivalent to polybar i3 module) */
+#workspaces button {
+    padding: 0 8px;
+    background-color: transparent;
+    color: #dfdfdf;
+}
+
+#workspaces button.focused {
+    background-color: #444444;
+    border-bottom: 3px solid #ffb52a; /* Polybar primary color */
+}
+
+#workspaces button.urgent {
+    background-color: #bd2c40; /* Polybar alert color */
+}
+
+/* Per Module Underlines (Translated from polybar format-underline) */
+
+#language {
+    border-bottom: 3px solid #e60053; /* Polybar secondary */
+}
+
+#cpu, #custom-load {
+    border-bottom: 3px solid #f90000;
+}
+
+#clock.mtv, #clock.nyc, #clock.tok, #custom-hostname {
+    border-bottom: 3px solid #0af56c;
+}
+
+#clock.zrh {
+    border-bottom: 3px solid #ff8000;
+}
+
+#clock.local {
+    border-bottom: 3px solid #0a6cf5;
+}
+
+/* LOAS / gCert colors */
+#custom-loas {
+    color: #ff0000;
+}
+
+#custom-loas-always {
+    color: #00ff00;
+}
+
+#custom-reboot {
+    color: #ffff00;
+}
+
+#custom-reboot-today {
+    color: #ff0000;
+}
