@@ -11,7 +11,7 @@
 # Alt (Mod1) or Windows (Mod4)
 set $mod Mod1
 
-# Make a mode that will pass any key through and be ignored by i3, escept 'Esc'.
+# Make a mode that will pass any key through and be ignored by i3, except 'Esc'.
 mode "passthrough" {
     bindsym Escape mode "default"
 }
