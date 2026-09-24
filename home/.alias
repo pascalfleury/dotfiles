@@ -26,6 +26,11 @@ alias gepr='grep'
 alias gerp='grep'
 alias grpe='grep'
 
+function psg() {
+  local search="$*"
+  ps -elf | { head -n 1; grep -E ${search} ; }
+}
+
 function concat() {
   local IFS="$1"; shift; echo "$*"
 }
