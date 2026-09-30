@@ -1,5 +1,7 @@
+exec > ${HOME}/.crd_session.log 2>&1
+
 source ${HOME}/.profile
 case "$(hostname -a)" in
-  moleson)  exec /usr/bin/i3 ;;
-        *)  exec /usr/bin/i3 ;;
+  moleson)  exec /etc/X11/Xsession /usr/bin/i3 ;;
+        *)  exec /etc/X11/Xsession /usr/bin/i3 ;;
 esac
