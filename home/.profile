@@ -12,6 +12,10 @@ umask 002
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+export PAPERSIZE=a4
+export LC_MEASUREMENT="en_DK.UTF-8"
+export LC_PAPER="en_DK.UTF-8"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

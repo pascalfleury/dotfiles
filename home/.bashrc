@@ -78,10 +78,17 @@ export LS_COLORS='no=00:fi=00:di=00;35:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 export PATH="./bin:${PATH}"
 
 # Add Android SDK tools
-ANDROID_SDK="${HOME}/Apps/Android/android-sdk-linux"
-if [[ -d "${ANDROID_SDK}" ]]; then
-  export PATH="${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools"
-fi
+ANDROID_SDK="${HOME}/Apps/Android/SDK"
+declare -a ANDROID_DIRS=(
+    "${HOME}/Apps/Android/android-studio/bin"
+    "${ANDROID_SDK}/platform-tools"
+    "${ANDROID_SDK}/emulator"
+    "${ANDROID_SDK}/navigator"
+    "${ANDROID_SDK}/cmdline-tools/latest/bin"
+)
+for DIR in "${ANDROID_DIRS[@]}"; do
+  [[ -d "${DIR}" ]] && export PATH="${PATH}:${DIR}"
+done
 
 # Add PlatformIO tools
 #if [[ -d "${HOME}/.platformio/penv/bin" ]]; then
