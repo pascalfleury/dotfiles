@@ -51,10 +51,12 @@ export SHELLID="$(date +'%Y%m%d%H%M%S')$$"
 export HIST_DIR="${HIST_DIR:-${HOME}/cli_history}"
 export HIST_FILE="${HIST_FILE:-${HIST_DIR}/cli.$(hostname -s)}"
 export HISTTIMEFORMAT=""
-export PROMPT_COMMAND='echo $SHELLID $PIPESTATUS $USER@$HOSTNAME $(date +"%Y%m%d %H%M%S") $(printf %q "$PWD") "$(history 1)" >> $HIST_FILE'
 # Simplification to put history into the hist file
 export HISTCONTROL=ignoredups
 #export PROMPT_COMMAND="history -a && `which exp` history \"\$(history 1)\""
+
+# Keep LINES/COLUMNS in sync after terminal resizes.
+shopt -s checkwinsize
 
 # Access convenience for project dirs.
 [[ -z "${CDPATH}" ]] && CDPATH="."
@@ -63,13 +65,25 @@ if [[ -d "${HOME}/Projects" ]]; then
 fi
 export CDPATH
 
-# My prompt
-if [[ -n "${PS1}" ]]; then
-  # Careful: any $() command in this prompt will set the $? and therefore influence
-  # what is displayed at the end with $(( $? ? 31 : 32 ))
-  # So her eit is passed to tabit, and tabit will return with that return code.
-  export PS1='\[\033[1;33m\]`tabit $?`\[\033[0;38m\]:\[\033[1;32m\]\W\[\033[0;38m\]\[\033[1;$(($??31:32))m\] \$\[\033[1;37m\] '
-fi
+# My prompt (built via PROMPT_COMMAND so Bash decodes \[ \] from tabit in pass 1).
+__build_prompt() {
+  local rc=$? pipe0="${PIPESTATUS[0]}"
+  if [[ -d "${HIST_DIR}" ]]; then
+    echo "${SHELLID}" "${pipe0}" "${USER}@${HOSTNAME}" "$(date +"%Y%m%d %H%M%S")" "$(printf %q "${PWD}")" "$(history 1)" >> "${HIST_FILE}"
+  fi
+
+  if [[ -n "${PS1}" ]]; then
+    local tabit_out rc_color
+    tabit_out="$(TABIT_PS1=1 tabit "${rc}")"
+    rc_color=$(( rc ? 31 : 32 ))
+    PS1='\[\033[1;33m\]'"${tabit_out}"'\[\033[0m\]:\[\033[1;32m\]\W\[\033[0;1;'"${rc_color}"'m\] \$\[\033[1;37m\] '
+    if declare -F vterm_prompt_end >/dev/null; then
+      PS1+='\[$(vterm_prompt_end)\]'
+    fi
+  fi
+}
+export -n PS1 PROMPT_COMMAND 2>/dev/null || true
+PROMPT_COMMAND='__build_prompt'
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 export LS_COLORS='no=00:fi=00:di=00;35:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:'
